@@ -1,4 +1,6 @@
 ﻿using Library_Console.App.DataModels;
+using Library_Console.App.Enums;
+using Library_Console.App.Helpers;
 using Library_Console.App.Manager;
 
 namespace Library_Console.App
@@ -6,26 +8,47 @@ namespace Library_Console.App
     internal class Program
     {
         static void Main(string[] args)
-        {   BookManager bookManager = new BookManager();
-            Book book1 = new Book();
-            book1.Name = Console.ReadLine();
-            book1.Price = 100;
-            bookManager.Add(book1);
+        {
 
-            Book book2 = new Book();
-            book2.Name = "Yoga";
-            book2.PageCount = 10;
+            BookManager bookManager = new BookManager();
+            AuthorManager authorManager = new AuthorManager();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Welcome to the Library!");
 
-            Book book3 = new Book();
-            book3.Name = "Sarah";
-            bookManager.Add(book2);
-            bookManager.Add(book3);
 
-            foreach (var item in bookManager)
+            Console.ForegroundColor = ConsoleColor.White;
+            var selectmenu = Helper.ReadMenu<MenuTypes>("Select Menu: ");
+
+
+            switch (selectmenu)
             {
-                Console.WriteLine(item);
+                case MenuTypes.AuthorAdd:
+                    break;
+                case MenuTypes.AuthorEdit:
+                    break;
+                case MenuTypes.AuthorRemove:
+                    break;
+                case MenuTypes.AuthorFindByName:
+                    break;
+                case MenuTypes.AuthorGetById:
+                    break;
+                case MenuTypes.AuthorGetAll:
+                    break;
+                case MenuTypes.BookAdd:
+                    break;
+                case MenuTypes.BookEdit:
+                    break;
+                case MenuTypes.BookRemove:
+                    break;
+                case MenuTypes.BookFindByName:
+                    break;
+                case MenuTypes.BookGetById:
+                    break;
+                case MenuTypes.BookGetAll:
+                    break;
+                default:
+                    break;
             }
-            
 
         }
     }

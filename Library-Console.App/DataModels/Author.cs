@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Library_Console.App.Enums;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,11 @@ namespace Library_Console.App.DataModels
         public bool Equals(Author? other)
         {
             return other?.id == this.id;
+        }
+
+        public override string ToString()
+        {
+            return $"{id}. {Name}, {Surname}";
         }
     }
 }
