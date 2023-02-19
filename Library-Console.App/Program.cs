@@ -36,6 +36,7 @@ namespace Library_Console.App
                     Console.Clear();
                     selectmenu = Helper.ReadMenu<MenuTypes>("Select Menu: ");
                     goto label1;
+
                 case MenuTypes.AuthorEdit:
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Choose the Author you want to edit: ");
@@ -58,10 +59,11 @@ namespace Library_Console.App
                         Console.Clear();
                         goto case MenuTypes.AuthorEdit;
                     }
-                    author.Name = Helper.ReadString("Change the author name: ");
-                    author.Surname = Helper.ReadString("Change the author surname: ");
+                    author.Name = Helper.ReadString("Edit the author name: ");
+                    author.Surname = Helper.ReadString("Edit the author surname: ");
                     Console.Clear();
                     goto case MenuTypes.AuthorGetAll;
+
                 case MenuTypes.AuthorRemove:
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Choose the Author you want to remove: ");
@@ -142,39 +144,130 @@ namespace Library_Console.App
                     goto label1;
                     
                 case MenuTypes.BookAdd:
-                    break;
+                    book = new Book();
+                    book.Name = Helper.ReadString("Book name: ");
+                    book.Genre= Helper.ReadMenu<Genre>("Select book genre from the list: ");
+                    book.PageCount = Helper.Readint("Number of pages: ");
+                    book.Price = Helper.Readint("Price: ");
+                    //book.AuthorId = author.Id;
+                    bookManager.Add(book);
+                    Console.Clear();
+                    selectmenu = Helper.ReadMenu<MenuTypes>("Select Menu: ");
+                    goto label1;
+
                 case MenuTypes.BookEdit:
-                    break;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Choose the Book you want to edit: ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    foreach (var item in bookManager)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    id = Helper.Readint("Choose the book ID from the list: ");
+                    if (id == 0)
+                    {
+
+                        selectmenu = Helper.ReadMenu<MenuTypes>("Select menu: ");
+                        goto label1;
+                    }
+                    book = bookManager.GetById(id);
+
+                    if (book == null)
+                    {
+                        Console.Clear();
+                        goto case MenuTypes.BookEdit;
+                    }
+                    book.Name = Helper.ReadString("Edit the book name: ");
+                    book.Genre = Helper.ReadMenu<Genre>("Edit genre, select from the list: ");
+                    book.PageCount = Helper.Readint("Edit number of pages: ");
+                    book.Price = Helper.Readint("Edit price: ");
+                    Console.Clear();
+                    goto case MenuTypes.BookGetAll;
+
                 case MenuTypes.BookRemove:
-                    break;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Choose the Book you want to remove: ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    foreach (var item in authorManager)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    id = Helper.Readint("Choose the Book ID: ");
+                    book = bookManager.GetById(id);
+                    if (book == null)
+                    {
+                        Console.Clear();
+                        goto case MenuTypes.BookRemove;
+                    }
+                    bookManager.Remove(book);
+                    Console.Clear();
+                    goto case MenuTypes.BookGetAll;
+
+                    foreach (var item in authorManager)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    selectmenu = Helper.ReadMenu<MenuTypes>("Select Menu: ");
+                    goto label1;
+                    
                 case MenuTypes.BookFindByName:
-                    break;
+                    string name1 = Helper.ReadString("Enter the Book initial letters to search: ");
+                    var data1 = bookManager.FindByName(name1);
+                    if (data1.Length == 0)
+                    {
+                        Console.WriteLine("Couldn't find");
+                    }
+
+                    Console.Clear();
+
+                    foreach (var item in data1)
+                    {
+                        Console.WriteLine(item);
+                    }
+
+                    selectmenu = Helper.ReadMenu<MenuTypes>("Select Menu: ");
+
+                    goto label1;
+                    
                 case MenuTypes.BookGetById:
+                    foreach (var item in bookManager)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    id = Helper.Readint("Choose ID: ");
+
+                    if (id == 0)
+                    {
+                        selectmenu = Helper.ReadMenu<MenuTypes>("Select Menu: ");
+                        goto label1;
+                    }
+                    book = bookManager.GetById(id);
+                    if (book == null)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Couldn't find");
+                        goto case MenuTypes.BookGetById;
+                    }
+                    Console.Clear();
+                    Console.WriteLine(book);
+                    selectmenu = Helper.ReadMenu<MenuTypes>("Select Menu: ");
                     break;
+                    
                 case MenuTypes.BookGetAll:
-                    break;
-                default:
-                    break;
+                    Console.Clear();
+                    foreach (var item in bookManager)
+                    {
+                        Console.WriteLine(item);
+                    }
+
+                    selectmenu = Helper.ReadMenu<MenuTypes>("Select Menu: ");
+
+                    goto label1;
+                    
+               
             }
 
-            //string sentence = "Good Luck! ";
-
-
-            //while (true)
-            //{
-            //    char first = sentence[0];
-            //    string second = sentence.Substring(1);
-            //    sentence = second + first;
-            //    Console.Clear();
-            //    Console.WriteLine(sentence);
-
-            //    if (sentence.Substring(0, 7) == "Welcome")
-            //    {
-            //        Thread.Sleep(4000);
-            //    }
-            //    else Thread.Sleep(300);
-
-            //}
+           
 
         }
     }
