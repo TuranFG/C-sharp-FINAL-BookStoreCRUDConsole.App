@@ -23,7 +23,7 @@ namespace Library_Console.App.Helpers
         label1:
             ConsoleColor oldcolor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(caption);
+            Console.Write(caption);
             Console.ForegroundColor = oldcolor;
             income = Console.ReadLine();
             if (!Enum.TryParse(typeof(T), income, out object value) || !Enum.IsDefined(typeof(T), value))

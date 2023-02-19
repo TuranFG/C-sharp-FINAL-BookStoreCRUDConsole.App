@@ -1,5 +1,5 @@
 ﻿using Library_Console.App.DataModels;
-using Library_Console.App.Infrastructure;
+using Library_Console.App.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -59,6 +59,16 @@ namespace Library_Console.App.Manager
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
+        }
+
+        public Book GetById(int id)
+        {
+            return Array.Find(data, item => item.id == id);
+        }
+
+        public Book[] FindByName(string name)
+        {
+            return Array.FindAll(data, item => item.Name.ToLower().StartsWith(name.ToLower()));
         }
     }
 }

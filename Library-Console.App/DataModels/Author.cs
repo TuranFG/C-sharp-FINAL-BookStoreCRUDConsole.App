@@ -13,24 +13,25 @@ namespace Library_Console.App.DataModels
         static int counter = 0;
         public Author()
         {
-            this.id = ++counter;
+            counter++;
+            this.Id =counter;
         }
         public Author(int id)
         {
-            this.id = id;   
+            this.Id = id;   
         }
-        public int id { get; private set; }
+        public int Id { get; private set; }
         public string Name { get; set; }
         public string Surname { get; set; }
 
         public bool Equals(Author? other)
         {
-            return other?.id == this.id;
+            return other?.Id == this.Id;
         }
 
         public override string ToString()
         {
-            return $"{id}. {Name}, {Surname}";
+            return $"{Id}. {Name}, {Surname}";
         }
     }
 }
