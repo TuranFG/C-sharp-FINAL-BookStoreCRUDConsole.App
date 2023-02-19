@@ -188,7 +188,7 @@ namespace Library_Console.App
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Choose the Book you want to remove: ");
                     Console.ForegroundColor = ConsoleColor.White;
-                    foreach (var item in authorManager)
+                    foreach (var item in bookManager)
                     {
                         Console.WriteLine(item);
                     }
