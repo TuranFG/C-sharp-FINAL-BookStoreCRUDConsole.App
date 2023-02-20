@@ -149,7 +149,6 @@ namespace Library_Console.App
                     book.Genre= Helper.ReadMenu<Genre>("Select book genre from the list: ");
                     book.PageCount = Helper.Readint("Number of pages: ");
                     book.Price = Helper.Readint("Price: ");
-                    //book.AuthorId = author.Id;
                     bookManager.Add(book);
                     Console.Clear();
                     selectmenu = Helper.ReadMenu<MenuTypes>("Select Menu: ");

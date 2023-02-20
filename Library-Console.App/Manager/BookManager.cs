@@ -40,8 +40,8 @@ namespace Library_Console.App.Manager
             for (int i = index; i < lenght - 1; i++)
             {
                 data[i] = data[i + 1];
-                Array.Resize(ref data, lenght - 1);
             }
+            Array.Resize(ref data, lenght - 1);
         }
 
         public Book this[int index]

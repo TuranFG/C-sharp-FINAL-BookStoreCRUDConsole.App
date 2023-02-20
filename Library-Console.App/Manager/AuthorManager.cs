@@ -43,8 +43,9 @@ namespace Library_Console.App.Manager
             for (int i = index; i < lenght; i++)
             {
                 data[i] = data[i+1];
-                Array.Resize(ref data, lenght);
+                
             }
+            Array.Resize(ref data, lenght);
         }
 
 
