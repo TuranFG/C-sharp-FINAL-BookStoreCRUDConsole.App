@@ -70,5 +70,17 @@ namespace Library_Console.App.Manager
         {
             return Array.FindAll(data, item => item.Name.ToLower().StartsWith(name.ToLower()));
         }
+
+        public void ReturnAuthorID(Book item)
+        {
+            var index = Array.IndexOf(data, item);
+            if (index == -1)
+                return;
+            var found = data[index];
+
+            found.AuthorId = item.id;
+           
+
+        }
     }
 }

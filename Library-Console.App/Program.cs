@@ -149,6 +149,13 @@ namespace Library_Console.App
                     book.Genre= Helper.ReadMenu<Genre>("Select book genre from the list: ");
                     book.PageCount = Helper.Readint("Number of pages: ");
                     book.Price = Helper.Readint("Price: ");
+                    foreach (var item in authorManager)
+                    {
+                        Console.WriteLine(item);
+
+                    }
+                    label2: book.AuthorId = Helper.Readint("Select Author ID from list: ");
+                    if (book.AuthorId > Author.GetAuthorCount()==true) { Console.WriteLine("Select ID from the list"); goto label2; }
                     bookManager.Add(book);
                     Console.Clear();
                     selectmenu = Helper.ReadMenu<MenuTypes>("Select Menu: ");

@@ -1,6 +1,7 @@
 ﻿using Library_Console.App.DataModels;
 using Library_Console.App.Interfaces;
 using System.Collections;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Library_Console.App.Manager
 {
@@ -69,6 +70,8 @@ namespace Library_Console.App.Manager
         {
             return Array.FindAll(data, item => item.Name.ToLower().StartsWith(name.ToLower()));
         }
+
+       
 
     }
 }

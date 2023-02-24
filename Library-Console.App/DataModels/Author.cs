@@ -11,10 +11,12 @@ namespace Library_Console.App.DataModels
     public class Author: IEquatable<Author> 
     {
         static int counter = 0;
+        static int authorCount = 0;
         public Author()
         {
             counter++;
             this.Id =counter;
+            authorCount++;
         }
         public Author(int id)
         {
@@ -31,8 +33,13 @@ namespace Library_Console.App.DataModels
 
         public override string ToString()
         {
-            return $"{Id}. {Name}, {Surname}";
+            return $"{Id}. Author Name: {Name}, Author Surname: {Surname}";
         }
-       
+
+        public static int GetAuthorCount()
+        {
+            return authorCount;
+        }
+
     }
 }

@@ -34,7 +34,7 @@ namespace Library_Console.App.DataModels
 
         public override string ToString()
         {
-            return $"{id}. {Name}, {AuthorId}, {Genre}, {PageCount}, {Price}";
+            return $"{id}. Book Name: {Name}, Author ID: {AuthorId}, Genre:{Genre}, Page Count: {PageCount}, Price: {Price}";
         }
     }
 }
